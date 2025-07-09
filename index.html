@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pluto Assistant</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="assistant-container">
+    <img src="assets/avatar.png" alt="Pluto Avatar" />
+    <input type="text" id="userInput" placeholder="Speak or type your command..." />
+    <button onclick="startListening()">🎙️</button>
+    <button onclick="respondToUser()">💬</button>
+    <p id="response"></p>
+  </div>
+  <script src="script.js"></script>
+  <script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('service-worker.js')
+        .then(reg => console.log('Service Worker registered!', reg))
+        .catch(err => console.error('Service Worker failed:', err));
+    });
+  }
+</script>
+  <link rel="manifest" href="manifest.json" />
+</body>
+</html>
